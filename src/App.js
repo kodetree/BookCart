@@ -1,12 +1,20 @@
-import './App.css';
-import BookList from './Components/booklist.component';
+import React from 'react'
 
-function App() {
+// bring Provider from react-redux, it's the bridge for connecting react to redux
+import { Provider } from 'react-redux'
+
+// Bring the redux store too
+import store from './redux/store'
+
+// Components
+import BookList from './Components/booklist.component'
+
+const App = () => {
   return (
-    <div className="container">
-      <BookList></BookList>
-    </div>
-  );
+    // Register your redux Provider here
+    <Provider store={store}>
+      <BookList />
+    </Provider>
+  )
 }
-
-export default App;
+export default App
