@@ -2,7 +2,7 @@
   @desc createStore is used for creating a store for our redux
   @desc applyMiddleware is used for applying some middleware to redux, in this case we gonna using redux-saga
 */
-import { createStore, applyMiddleware } from 'redux' 
+import { createStore, applyMiddleware } from 'redux'
 
 // composeWithDevTools is tools that gonna be connecting our application for debugging the redux into the browser
 import { composeWithDevTools } from 'redux-devtools-extension'
@@ -21,7 +21,7 @@ const sagaMiddleware = createSagaMiddleware()
 const store = createStore(
   rootReducer,
   {},
-  composeWithDevTools(applyMiddleware(sagaMiddleware))
+  composeWithDevTools(applyMiddleware(sagaMiddleware)),
 )
 
 // Run redux-saga

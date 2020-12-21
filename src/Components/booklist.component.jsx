@@ -6,16 +6,10 @@ import { connect } from 'react-redux'
 
 // bring the actions, just bring that have REQUESTED in the suffix
 // If you dispatching that doesn't have REQUESTED, it will not work
-import {
-  GET_BOOKS_REQUESTED
-} from '../redux/actions/books-action'
+import { GET_BOOKS_REQUESTED } from '../redux/actions/books-action'
 import Book from './book.component'
 
-
-const BookList = ({
-  book: { loading, books },
-  getBooks
-}) => {
+const BookList = ({ book: { loading, books }, getBooks }) => {
   useEffect(() => {
     getBooks()
     // eslint-disable-next-line
@@ -23,28 +17,28 @@ const BookList = ({
 
   return (
     <div className="container">
-        <div className="row row-cols-4">
-      {loading && 'Loading...'}    
-  
-      {books && books.map((book, index) => (
-        <div className="col">
-            <Book book={book} key={index}  />
-        </div>        
-      ))}
+      <div className="row row-cols-4">
+        {loading && 'Loading...'}
+
+        {books &&
+          books.map((book, index) => (
+            <div className="col">
+              <Book key={index} book={book} key={index} />
+            </div>
+          ))}
       </div>
-    </div>    
+    </div>
   )
 }
 
-
 // Get state to props
 const mapStateToProps = (state) => ({
-  book: state.book
+  book: state.book,
 })
 
 // Get dispatch / function to props
 const mapDispatchToProps = (dispatch) => ({
-  getBooks: () => dispatch({ type: GET_BOOKS_REQUESTED })
+  getBooks: () => dispatch({ type: GET_BOOKS_REQUESTED }),
 })
 
 // To make those two function works register it using connect
